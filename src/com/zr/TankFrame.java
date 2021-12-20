@@ -9,10 +9,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class TankFrame extends Frame {
-    int x =200;
-    int y =200;
-    Direction dir = Direction.down;
-    final int speed =10;
+     Tank tank =new Tank(200,200,Direction.down);
     public  TankFrame(){
         setSize(800,600);
         setResizable(false);
@@ -29,21 +26,7 @@ public class TankFrame extends Frame {
 
     @Override
     public void paint(Graphics g){
-        g.fillRect(x,y,50,50);
-        switch (dir){
-            case up:
-                y-=speed;
-                break;
-            case down:
-                y+=speed;
-                break;
-            case left:
-                x-=speed;
-                break;
-            case right:
-                x+=speed;
-                break;
-        }
+         tank.paint(g);
         //x+=2;
         //y+=2;
     }
@@ -97,10 +80,10 @@ public class TankFrame extends Frame {
         }
 
         private void setMainPoint() {
-            if(bl) dir = Direction.left;
-            if(bu) dir = Direction.up;
-            if(br) dir = Direction.right;
-            if(bd) dir = Direction.down;
+            if(bl)  tank.setDir(Direction.left);
+            if(bu) tank.setDir(Direction.up);
+            if(br) tank.setDir(Direction.right);
+            if(bd) tank.setDir(Direction.down);
         }
     }
 }
